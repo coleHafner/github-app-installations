@@ -3,6 +3,9 @@ This script will get you the number installations for your GitHub app.
 
 ## Setup
 ```sh
+# install dependencies
+npm ci 
+
 # find app id and put it in your env file (or just create an environment variable called GITHUB_APP_ID)
 cp .env.sample .env
 
@@ -13,7 +16,7 @@ cp private-key.pem.sample private-key.pem
 Find instructions on creating a new PK [here](https://developer.github.com/apps/building-github-apps/authenticating-with-github-apps/#generating-a-private-key).
 
 ## Usage
-```
+```sh
 node index.js
 ```
 
