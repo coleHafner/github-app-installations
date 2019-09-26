@@ -1,16 +1,22 @@
 #!/usr/bin/env node
-const dotenv = require('dotenv');
-const jwt = require('njwt');
-const fs = require('fs');
 
-dotenv.config();
+module.exports = ({
+	githubAppId,
+	pkPath,
+	alg = 'RS256',
+	debug = false,
+}) => {
+	const jwt = require('njwt');
+	const fs = require('fs');
 
-const claims = {iss: process.env.GITHUB_APP_ID};
-const pkFile = './private-key.pem';
-const pkPayload = fs.readFileSync(pkFile, 'utf8');
-const token = jwt.create(claims, pkPayload);
+	const claims = {iss: githubAppId};
+	const pkPayload = fs.readFileSync(pkPath, 'utf8');
+	const token = jwt.create(claims, pkPayload, alg);
 
-// set expiration an hour from now
-token.setExpiration(new Date().getTime() + 60*1000);
+	if (debug) console.log('TOKEN config', token);
 
-console.log(token.compact());
+	// set expiration for 5 minutes
+	token.setExpiration(new Date().getTime() + 300*1000);
+	return token.compact();
+}
+

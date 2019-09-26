@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "axios": "^0.19.0",
+    "colors": "^1.4.0",
+    "dotenv": "^8.1.0",
     "njwt": "^0.4.0"
   }
 }
