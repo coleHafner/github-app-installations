@@ -1,4 +1,4 @@
-# GitHub App Installations
+# GitHub app installation checker utility
 This script will get you the number installations for your GitHub app.
 
 ## Setup
